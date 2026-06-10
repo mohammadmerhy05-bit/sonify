@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Codex // OS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="grid-overlay"></div>
+
+    <div class="interface-container">
+
+        <header class="sys-header">
+            <div class="header-left">
+                <div class="sys-title">CODEX_CORE <span class="gold-text">// v5.2 (AUTO-SAVE ACTIVE)</span></div>
+                <div class="sys-status">GLOBAL LEVEL = BASE + HABIT AVERAGE</div>
+            </div>
+
+            <div class="level-engine">
+                <div class="level-badge">LVL <span id="char-level" class="editable" contenteditable="false">01</span>
+                </div>
+                <div class="xp-bar-container">
+                    <div id="xp-bar-fill"></div>
+                </div>
+                <div class="xp-metrics">
+                    <span id="current-xp" class="editable" contenteditable="false">0</span> /
+                    <span id="max-xp" class="editable" contenteditable="false">100</span> XP
+                </div>
+            </div>
+
+            <button class="edit-toggle-btn" id="master-edit-btn" title="Toggle Edit Mode">✎</button>
+            <button class="sys-btn" id="hard-reset-btn"
+                style="margin-left: 10px; border-color: var(--red); color: var(--red);">WIPE DATA</button>
+        </header>
+
+        <nav class="main-nav">
+            <button class="tab-btn active" data-target="tab-quests">QUESTS</button>
+            <button class="tab-btn" data-target="tab-calendar">CALENDAR</button>
+            <button class="tab-btn" data-target="tab-footprint">DIGITAL FOOTPRINT</button>
+            <button class="tab-btn" data-target="tab-habits">HABITS</button>
+        </nav>
+
+        <main class="viewport">
+
+            <section id="tab-quests" class="panel tab-panel active">
+                <div class="panel-inner">
+                    <div class="panel-header-row">
+                        <h2 class="panel-header">FUN_QUEST_REGISTRY</h2>
+                        <button class="sys-btn" id="add-global-quest-btn">+ ADD FUN QUEST</button>
+                    </div>
+                    <p class="section-desc">Open-world exploration. Grants direct Global XP.</p>
+                    <div class="quest-container" id="global-quest-list">
+                    </div>
+                </div>
+            </section>
+
+            <section id="tab-calendar" class="panel tab-panel">
+                <div class="panel-inner calendar-workspace">
+                    <div class="calendar-header-ui">
+                        <h2 class="panel-header" class="editable" contenteditable="false">CURRENT MONTH</h2>
+                    </div>
+
+                    <div class="calendar-days-header">
+                        <div>S</div>
+                        <div>M</div>
+                        <div>T</div>
+                        <div>W</div>
+                        <div>T</div>
+                        <div>F</div>
+                        <div>S</div>
+                    </div>
+
+                    <div class="calendar-month-grid" id="calendar-grid">
+                    </div>
+
+                    <div class="day-inspector-box">
+                        <h3>AGENDA_LEDGER // DAY <span id="selected-day-label">--</span></h3>
+                        <textarea id="calendar-notes" placeholder="Enter schedule or notes for this day..."></textarea>
+                        <button class="sys-btn" id="save-note-btn" style="margin-top: 10px; width: 100%;">SAVE
+                            SCHEDULE</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tab-footprint" class="panel tab-panel">
+                <div class="panel-inner split-layout">
+                    <div class="info-details">
+                        <h2 class="panel-header">BIOMETRIC_MATRIX</h2>
+                        <div class="data-block">
+                            <p class="data-line"><span class="label">> NAME:</span> <span class="val editable"
+                                    contenteditable="false">OPERATOR</span></p>
+                            <p class="data-line"><span class="label">> HEIGHT:</span> <span class="val editable"
+                                    contenteditable="false">180 cm</span></p>
+                            <p class="data-line"><span class="label">> WEIGHT:</span> <span class="val editable"
+                                    contenteditable="false">72 kg</span></p>
+                            <p class="data-line"><span class="label">> SYNCED_LEVEL:</span> <span class="val gold-text"
+                                    id="footprint-level-sync">01</span></p>
+                        </div>
+                    </div>
+
+                    <div class="sprite-display">
+                        <div class="sprite-scanner"></div>
+                        <img src="avatar.png" id="avatar-image" alt="Profile Avatar"
+                            onerror="this.style.display='none'; document.getElementById('avatar-fallback').style.display='block';">
+                        <div id="avatar-fallback"
+                            style="display:none; color: var(--red); font-weight: bold; text-align: center;">[MISSING:
+                            avatar.png]</div>
+                        <div class="sprite-hud-data" style="margin-top: 10px;">OPERATOR_SYNCED</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tab-habits" class="panel tab-panel">
+                <div class="panel-inner">
+                    <div class="panel-header-row">
+                        <h2 class="panel-header">HABIT_PROGRESSION_NODES</h2>
+                        <button class="sys-btn" id="reset-dailies-btn">RESET DAILIES (NEW DAY)</button>
+                    </div>
+                    <p class="section-desc">Daily routines maintain multipliers. Milestones level up habits & boost
+                        Global Level.</p>
+
+                    <div class="habits-grid" id="habits-container">
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
